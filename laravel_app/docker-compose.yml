@@ -35,8 +35,8 @@ services:
     restart: unless-stopped
     environment:
       MARIADB_ROOT_PASSWORD: pass
-      MARIADB_DATABASE: aula-sql
-      MARIADB_USER: aula-sql
+      MARIADB_DATABASE: aulaSQL
+      MARIADB_USER: aulaSQL
       MARIADB_PASSWORD: pass
     networks:
       - db-net
