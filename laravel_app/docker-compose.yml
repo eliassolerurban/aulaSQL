@@ -30,14 +30,14 @@ services:
       - web-net
 
   db:
-    image: mysql:5.7
+    image: mariadb:10.5
     container_name: db
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: aulaSQL
-      MYSQL_ROOT_PASSWORD: 0000
-      MYSQL_PASSWORD: 0000
-      MYSQL_USER: aulaSQL
+      MARIADB_ROOT_PASSWORD: pass
+      MARIADB_DATABASE: aula-sql
+      MARIADB_USER: aula-sql
+      MARIADB_PASSWORD: pass
     networks:
       - db-net
 
