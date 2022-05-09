@@ -16,4 +16,12 @@ class Exercise extends Model
     public function unit(){
         return $this->belongsTo(Unit::class, 'unit');
     }
+
+    public function exams(){
+        return $this->belongsToMany(Exam::class);
+    }
+
+    public function users_exams(){
+        return $this->belongsToMany(User::class);
+    }
 }
