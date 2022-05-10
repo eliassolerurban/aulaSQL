@@ -32,6 +32,7 @@
             <li>{{$user->name}}</li>
         @endforeach
     </ul>
-
+    {{'Ejercicio 1: '.$exercise->question}}<br>
+    {{'Respuesta: '.$exercise->answer}}
 </body>
 </html>

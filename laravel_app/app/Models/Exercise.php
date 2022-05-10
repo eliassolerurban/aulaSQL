@@ -7,21 +7,31 @@ use Illuminate\Database\Eloquent\Model;
 
 class Exercise extends Model
 {
-    use HasFactory;
-
+    protected $table = 'exercises';
+    
     public function users(){
         return $this->belongsToMany(User::class);
     }
     
     public function unit(){
-        return $this->belongsTo(Unit::class, 'unit');
+        return $this->belongsTo(Unit::class, 'unit_id');
     }
 
+    public function attachExercises($exercises){
+        $this -> exercises() -> attach($exercises);
+    }
+    
+    public function detachExercises($exercises){
+        $this -> exercises() -> detach($exercises);
+    }
+    
     public function exams(){
         return $this->belongsToMany(Exam::class);
     }
-
+    
     public function users_exams(){
         return $this->belongsToMany(User::class);
     }
+
+    use HasFactory;
 }
