@@ -23,6 +23,7 @@
     <div>
         <h2>Datos del aula {{$class->name}}</h2>
         {{'Creador: '.$class->creator->name }}<br>
+        {{'General: '.$class }}<br>
     </div>
     <br>
     <br>
@@ -32,8 +33,22 @@
             <li>{{$user->name}}</li>
         @endforeach
     </ul>
+    {{'Alumnos en este aula:' }}<br>
+    <ul>
+        @foreach ($alus as $alu)  
+            <li>{{$alu->name}}</li>
+        @endforeach
+    </ul>
     {{'Ejercicio 1: '.$exercise->question}}<br>
     {{'Respuesta: '.$exercise->answer}}<br>
     {{'Unidad: '.$exercise->unit->title}}<br>
+        
+    {{-- //TODO: results for each student with ternary relationship --}}
+    {{-- {{'Resultados de los alumnos al realizar el ejercicio:' }}<br>
+    <ul>
+        @foreach ($alus as $alu)  
+            <li></li>
+        @endforeach
+    </ul> --}}
 </body>
 </html>
