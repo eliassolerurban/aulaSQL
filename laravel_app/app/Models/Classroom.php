@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Classroom extends Model
 {
+    protected $table = 'classrooms';
+
     public function creator()
     {
-        return $this->belongsTo(User::class, 'creator');
+        return $this->belongsTo(User::class, 'creator_id');
     }
 
     public function users(){

@@ -50,6 +50,14 @@ class User extends Authenticatable
     public function classrooms(){
         return $this->belongsToMany(Classroom::class);
     }
+
+    public function attachClassrooms($classrooms){
+        $this -> classrooms() -> attach($classrooms);
+    }
+    
+    public function detachClassrooms($classrooms){
+        $this -> classrooms() -> detach($classrooms);
+    }
     
     public function exercises(){
         return $this->belongsToMany(Exercise::class);
