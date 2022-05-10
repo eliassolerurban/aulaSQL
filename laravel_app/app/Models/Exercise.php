@@ -16,14 +16,6 @@ class Exercise extends Model
     public function unit(){
         return $this->belongsTo(Unit::class, 'unit_id');
     }
-
-    public function attachExercises($exercises){
-        $this -> exercises() -> attach($exercises);
-    }
-    
-    public function detachExercises($exercises){
-        $this -> exercises() -> detach($exercises);
-    }
     
     public function exams(){
         return $this->belongsToMany(Exam::class);

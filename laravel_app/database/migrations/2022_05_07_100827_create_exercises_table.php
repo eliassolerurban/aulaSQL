@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('question');
             $table->text('answer');
-            $table->bigInteger('unit');
+            $table->bigInteger('unit_id');
             $table->timestamps();
         });
     }

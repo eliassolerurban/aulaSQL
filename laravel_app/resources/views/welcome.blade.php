@@ -33,6 +33,7 @@
         @endforeach
     </ul>
     {{'Ejercicio 1: '.$exercise->question}}<br>
-    {{'Respuesta: '.$exercise->answer}}
+    {{'Respuesta: '.$exercise->answer}}<br>
+    {{'Unidad: '.$exercise->unit->title}}<br>
 </body>
 </html>
