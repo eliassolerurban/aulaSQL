@@ -37,19 +37,19 @@
     <ul>
         @foreach ($alus as $alu)  
             <li>{{$alu->name}}</li>
-            <li>{{$alu->exercises}}</li>
+            <ul>
+            @foreach ($alu->exercises as $exercise)
+                    <li>Intentos: en el ejercicio {{$exercise->question.': '.$exercise->pivot->tries}}</li>
+                    <li>
+                        {{$exercise->pivot->state === 'passed' ? 'Aprobado' : 'Suspendido'}} 
+                    </li>
+            @endforeach
+            </ul>
         @endforeach
     </ul>
-    {{'Ejercicio 1: '.$exercise->question}}<br>
-    {{'Respuesta: '.$exercise->answer}}<br>
-    {{'Unidad: '.$exercise->unit->title}}<br>
-        
-    {{-- //TODO: results for each student with ternary relationship --}}
-    {{-- {{'Resultados de los alumnos al realizar el ejercicio:' }}<br>
-    <ul>
-        @foreach ($alus as $alu)  
-            <li></li>
-        @endforeach
-    </ul> --}}
+    <h2>{{'Examen programado:' }}<br></h2>
+    <h3>{{$exam->name}}</h3>
+    {{'Creador: '.$exam->creator->name }}<br>
+    {{'Ejercicios: '.$exam->exercises }}<br>
 </body>
 </html>

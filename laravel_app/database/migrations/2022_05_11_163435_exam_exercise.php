@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('exams', function (Blueprint $table) {
+        Schema::create('exam_exercise', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->bigInteger('creator_id');
+            $table->unsignedInteger('exam_id');
+            $table->unsignedInteger('exercise_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exams');
+        //
     }
 };

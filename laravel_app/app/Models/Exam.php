@@ -15,9 +15,6 @@ class Exam extends Model
 
     public function creator()
     {
-        return $this->belongsTo(User::class, 'creator');
+        return $this->belongsTo(User::class, 'creator_id');
     }
-
-    //attach exam
-    // $user->exams()->attach([1 => ['exercise_id' => '2']]);
 }

@@ -60,7 +60,7 @@ class User extends Authenticatable
     }
     
     public function exercises(){
-        return $this->belongsToMany(Exercise::class);
+        return $this->belongsToMany(Exercise::class)->withPivot('tries', 'state');
     }
 
     public function exams(){
