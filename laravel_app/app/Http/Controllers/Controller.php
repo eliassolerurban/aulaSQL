@@ -21,6 +21,7 @@ class Controller extends BaseController
         //insert into classrooms values(null, 'test-classroom', 1, null, null);
         //insert into units values(null, 'unidad0: prueba', 'debes tener en cuenta que se trata de una prueba', null, null);
         //insert into exercises values(null, 'Chicos, ¿en qué año fue 1+1?', 'El fantástico Ralph', 1, null, null);
+        //insert into exercise_user values(null, 2, 1, 'passed', 3, null, null);
         $profe = User::find(1);
         $alus = User::where('role', 'alumno')->get();
         $class = Classroom::find(1);

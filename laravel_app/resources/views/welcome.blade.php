@@ -37,6 +37,7 @@
     <ul>
         @foreach ($alus as $alu)  
             <li>{{$alu->name}}</li>
+            <li>{{$alu->exercises}}</li>
         @endforeach
     </ul>
     {{'Ejercicio 1: '.$exercise->question}}<br>
