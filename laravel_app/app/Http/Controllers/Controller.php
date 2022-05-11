@@ -27,7 +27,6 @@ class Controller extends BaseController
         $class = Classroom::find(1);
         $exercise = Exercise::find(1);
         $unit = Unit::find(1);
-
         //adding profe to class
         // $profe -> attachClassrooms($class);
         //adding alus to class
