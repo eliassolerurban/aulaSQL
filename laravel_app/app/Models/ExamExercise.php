@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 class ExamExercise extends Pivot
 {
     use HasFactory;
+
+    public function examUsers(){
+        return $this->belongsToMany(ExamUser::class);
+    }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Classroom;
 use App\Models\Exam;
+use App\Models\ExamExercise;
+use App\Models\ExamUser;
 use App\Models\Exercise;
 use App\Models\Unit;
 use App\Models\User;
@@ -36,12 +38,14 @@ class Controller extends BaseController
         $exercise = Exercise::find(1);
         $unit = Unit::find(1);
         $exam = Exam::find(1);
+        $examUser = ExamUser::find(1);
+        $examExercise = ExamExercise::find(1);
         //adding profe to class
         // $profe -> attachClassrooms($class);
         //adding alus to class
         // $alus[0] -> attachClassrooms($class);
         // $alus[1] -> attachClassrooms($class);
         //adding exercise to unit
-        return view('welcome', compact('profe', 'class', 'exercise', 'alus', 'unit', 'exam'));
+        return view('welcome', compact('profe', 'class', 'exercise', 'alus', 'unit', 'exam', 'examUser', 'examExercise'));
     }
 }
