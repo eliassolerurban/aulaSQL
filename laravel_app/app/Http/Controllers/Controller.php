@@ -29,6 +29,7 @@ class Controller extends BaseController
         //insert into exercise_user values(null, 2, 1, 'passed', 3, null, null);
         //insert into exams values(null, 'Examen de prueba', 1, null, null);
         //insert into exam_exercise values(null, 1, 1, null, null);
+        //insert into exam_user values(null, 1, 2, null, null);
         $profe = User::find(1);
         $alus = User::where('role', 'alumno')->get();
         $class = Classroom::find(1);

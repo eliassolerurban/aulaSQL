@@ -51,5 +51,6 @@
     <h3>{{$exam->name}}</h3>
     {{'Creador: '.$exam->creator->name }}<br>
     {{'Ejercicios: '.$exam->exercises }}<br>
+    {{'Estudiantes: '.$exam->users}}<br>
 </body>
 </html>
