@@ -52,7 +52,6 @@
     {{'Creador: '.$exam->creator->name }}<br>
     {{'Ejercicios: '.$exam->exercises }}<br>
     {{'Estudiantes: '.$exam->users}}<br>
-    {{'Examen-Estudiantes: '.$examUser}}<br>
-    {{'Examen-Ejercicios: '.$examUser}}<br>
+    {{'Examen-Estudiantes: '.$examUser->examExercises}}<br>
 </body>
 </html>

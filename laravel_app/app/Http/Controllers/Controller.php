@@ -17,6 +17,8 @@ use Illuminate\Routing\Controller as BaseController;
 //drop table classroom_user;
 //drop table exercise_user;
 //drop table exam_exercise;
+//drop table exam_user;
+//drop table exam_exercise_exam_user ;
 
 class Controller extends BaseController
 {
@@ -32,6 +34,7 @@ class Controller extends BaseController
         //insert into exams values(null, 'Examen de prueba', 1, null, null);
         //insert into exam_exercise values(null, 1, 1, null, null);
         //insert into exam_user values(null, 1, 2, null, null);
+        //insert into exam_exercise_exam_user values(null, 1, 1, 10, null, null);
         $profe = User::find(1);
         $alus = User::where('role', 'alumno')->get();
         $class = Classroom::find(1);
