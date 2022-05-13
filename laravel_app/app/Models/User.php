@@ -63,8 +63,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Exercise::class)->withPivot('tries', 'state');
     }
     
-    //TODO: check withPivot usage for pivot relations
     public function exams(){
         return $this->belongsToMany(Exam::class);
     }
+
+    //TODO: check score only in exam-user, exam-exercise have to have only state (not score)  
 }
