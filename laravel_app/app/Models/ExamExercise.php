@@ -12,6 +12,6 @@ class ExamExercise extends Model
     use HasFactory;
 
     public function examUsers(){
-        return $this->belongsToMany(ExamUser::class)->withPivot('score');
+        return $this->belongsToMany(ExamUser::class)->withPivot('state');
     }
 }

@@ -12,7 +12,7 @@ class ExamUser extends Model
     use HasFactory;
 
     public function examExercises(){
-        return $this->belongsToMany(ExamExercise::class)->withPivot('score');
+        return $this->belongsToMany(ExamExercise::class)->withPivot('state');
     }
     //TODO: score for exam, not only for exercise
 }

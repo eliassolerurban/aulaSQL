@@ -7,5 +7,5 @@ insert into exercises values(null, 'Chicos, ¿en qué año fue 1+1?', 'El fantá
 insert into exercise_user values(null, 2, 1, 'passed', 3, null, null);
 insert into exams values(null, 'Examen de prueba', 1, null, null);
 insert into exam_exercise values(null, 1, 1, null, null);
-insert into exam_user values(null, 1, 2, null, null);
-insert into exam_exercise_exam_user values(null, 1, 1, 10, null, null);
+insert into exam_user values(null, 1, 2, 10, null, null);
+insert into exam_exercise_exam_user values(null, 1, 1, 'passed', null, null);
