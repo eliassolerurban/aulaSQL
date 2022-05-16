@@ -43,12 +43,13 @@ class Controller extends BaseController
         $exam = Exam::find(1);
         $examUser = ExamUser::find(1);
         $examExercise = ExamExercise::find(1);
+        $allExercises = Exercise::all();
         //adding profe to class
         // $profe -> attachClassrooms($class);
         //adding alus to class
         // $alus[0] -> attachClassrooms($class);
         // $alus[1] -> attachClassrooms($class);
         //adding exercise to unit
-        return view('welcome', compact('profe', 'class', 'exercise', 'alus', 'unit', 'exam', 'examUser', 'examExercise'));
+        return view('welcome', compact('profe', 'class', 'exercise', 'alus', 'unit', 'exam', 'examUser', 'examExercise', 'allExercises'));
     }
 }

@@ -50,8 +50,17 @@
     <h2>{{'Examen programado:' }}<br></h2>
     <h3>{{$exam->name}}</h3>
     {{'Creador: '.$exam->creator->name }}<br>
-    {{'Ejercicios: '.$exam->exercises }}<br>
+    {{-- {{'Ejercicios: '.$exam->exercises }}<br>
     {{'Estudiantes: '.$exam->users}}<br>
-    {{'Examen-Estudiantes: '.$examUser->examExercises}}<br>
+    {{'Examen-Estudiantes: '.$examUser->examExercises}}<br> --}}
+    <h2>{{'Ejercicios:' }}<br></h2>
+    <ul>
+        @foreach ($allExercises as $ex)  
+            <li>{{$ex->question}}</li>
+            <ul>
+                <li>{{$ex->answer}}</li>
+            </ul>
+        @endforeach
+    </ul>
 </body>
 </html>

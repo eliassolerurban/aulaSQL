@@ -66,6 +66,4 @@ class User extends Authenticatable
     public function exams(){
         return $this->belongsToMany(Exam::class);
     }
-
-    //TODO: check score only in exam-user, exam-exercise have to have only state (not score)  
 }
