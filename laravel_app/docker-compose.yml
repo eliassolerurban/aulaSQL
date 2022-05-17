@@ -2,9 +2,6 @@ version: '3.7'
 services:
   app:
     build:
-      args:
-        user: aulaSQL
-        uid: 1000
       context: ./
       dockerfile: Dockerfile
     image: app-php
@@ -38,6 +35,9 @@ services:
       MARIADB_DATABASE: aulaSQL
       MARIADB_USER: aulaSQL
       MARIADB_PASSWORD: pass
+      MARIADB_CHARACTER_SET_SERVER: utf8mb4
+      MARIADB_COLLATION_SERVER: utf8mb4_unicode_ci
+
     networks:
       - db-net
 
