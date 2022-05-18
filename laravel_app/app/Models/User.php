@@ -66,4 +66,8 @@ class User extends Authenticatable
     public function exams(){
         return $this->belongsToMany(Exam::class);
     }
+
+    public function created_classrooms(){
+        return $this->hasMany(Classroom::class);
+    }
 }

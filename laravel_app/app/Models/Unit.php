@@ -10,4 +10,8 @@ class Unit extends Model
     protected $table = 'units';
 
     use HasFactory;
+
+    public function exercises(){
+        return $this->hasMany(Exercise::class);
+    }
 }
