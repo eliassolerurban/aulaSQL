@@ -14,5 +14,4 @@ class ExamUser extends Model
     public function examExercises(){
         return $this->belongsToMany(ExamExercise::class)->withPivot('state');
     }
-    //TODO: score for exam, not only for exercise
 }
