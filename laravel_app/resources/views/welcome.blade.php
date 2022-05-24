@@ -52,7 +52,7 @@
     {{-- {{'Creador: '.$exam->creator->name }}<br> --}}
     {{-- {{'Ejercicios: '.$exam->exercises }}<br>
     {{-- {{'Estudiantes: '.$exam->users}}<br>
-    {{'Examen-Estudiantes: '.$examUser->examExercises}}<br> --}} --}}
+    {{'Examen-Estudiantes: '.$examUser->examExercises}}<br> --}}
     {{-- <h2>{{'Ejercicios:' }}<br></h2> --}}
     {{-- <ul>
         @foreach ($allExercises as $ex)  
