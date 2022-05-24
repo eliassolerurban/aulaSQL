@@ -9,33 +9,33 @@
 <body>
     <div>
         <h2>Datos del profesor</h2>
-        {{ 'Nombre: '.$profe->name }}<br>
+        {{-- {{ 'Nombre: '.$profe->name }}<br>
         {{ 'Email: '.$profe->email }}<br>
-        {{ 'Aulas en las que da clase: ' }}<br>
+        {{ 'Aulas en las que da clase: ' }}<br> --}}
         <ul>
-            @foreach ($profe->classrooms as $classroom)  
+            {{-- @foreach ($profe->classrooms as $classroom)  
                 <li>{{$classroom->name}}</li>
-            @endforeach
+            @endforeach --}}
         </ul>
     </div>
     <br>
     <br>
     <div>
-        <h2>Datos del aula {{$class->name}}</h2>
+        {{-- <h2>Datos del aula {{$class->name}}</h2>
         {{'Creador: '.$class->creator->name }}<br>
-        {{'General: '.$class }}<br>
+        {{'General: '.$class }}<br> --}}
     </div>
     <br>
     <br>
-    {{'Usuarios en este aula:' }}<br>
+    {{-- {{'Usuarios en este aula:' }}<br> --}}
     <ul>
-        @foreach ($class->users as $user)  
+        {{-- @foreach ($class->users as $user)  
             <li>{{$user->name}}</li>
-        @endforeach
+        @endforeach --}}
     </ul>
-    {{'Alumnos en este aula:' }}<br>
+    {{-- {{'Alumnos en este aula:' }}<br> --}}
     <ul>
-        @foreach ($alus as $alu)  
+        {{-- @foreach ($alus as $alu)  
             <li>{{$alu->name}}</li>
             <ul>
             @foreach ($alu->exercises as $exercise)
@@ -45,22 +45,22 @@
                     </li>
             @endforeach
             </ul>
-        @endforeach
+        @endforeach --}}
     </ul>
-    <h2>{{'Examen programado:' }}<br></h2>
-    <h3>{{$exam->name}}</h3>
-    {{'Creador: '.$exam->creator->name }}<br>
+    {{-- <h2>{{'Examen programado:' }}<br></h2>
+    <h3>{{$exam->name}}</h3> --}}
+    {{-- {{'Creador: '.$exam->creator->name }}<br> --}}
     {{-- {{'Ejercicios: '.$exam->exercises }}<br>
-    {{'Estudiantes: '.$exam->users}}<br>
-    {{'Examen-Estudiantes: '.$examUser->examExercises}}<br> --}}
-    <h2>{{'Ejercicios:' }}<br></h2>
-    <ul>
+    {{-- {{'Estudiantes: '.$exam->users}}<br>
+    {{'Examen-Estudiantes: '.$examUser->examExercises}}<br> --}} --}}
+    {{-- <h2>{{'Ejercicios:' }}<br></h2> --}}
+    {{-- <ul>
         @foreach ($allExercises as $ex)  
             <li>{{$ex->question}}</li>
             <ul>
                 <li>{{$ex->answer}}</li>
             </ul>
         @endforeach
-    </ul>
+    </ul> --}}
 </body>
 </html>
