@@ -1,66 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>aulaSQL - Inicio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
-    <div>
-        <h2>Datos del profesor</h2>
-        {{-- {{ 'Nombre: '.$profe->name }}<br>
-        {{ 'Email: '.$profe->email }}<br>
-        {{ 'Aulas en las que da clase: ' }}<br> --}}
-        <ul>
-            {{-- @foreach ($profe->classrooms as $classroom)  
-                <li>{{$classroom->name}}</li>
-            @endforeach --}}
-        </ul>
-    </div>
-    <br>
-    <br>
-    <div>
-        {{-- <h2>Datos del aula {{$class->name}}</h2>
-        {{'Creador: '.$class->creator->name }}<br>
-        {{'General: '.$class }}<br> --}}
-    </div>
-    <br>
-    <br>
-    {{-- {{'Usuarios en este aula:' }}<br> --}}
-    <ul>
-        {{-- @foreach ($class->users as $user)  
-            <li>{{$user->name}}</li>
-        @endforeach --}}
-    </ul>
-    {{-- {{'Alumnos en este aula:' }}<br> --}}
-    <ul>
-        {{-- @foreach ($alus as $alu)  
-            <li>{{$alu->name}}</li>
-            <ul>
-            @foreach ($alu->exercises as $exercise)
-                    <li>Intentos: en el ejercicio {{$exercise->question.': '.$exercise->pivot->tries}}</li>
-                    <li>
-                        {{$exercise->pivot->state === 'passed' ? 'Aprobado' : 'Suspendido'}} 
-                    </li>
-            @endforeach
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">aulaSQL</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Aulas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Unidades</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Exámenes</a>
+                </li>
             </ul>
-        @endforeach --}}
-    </ul>
-    {{-- <h2>{{'Examen programado:' }}<br></h2>
-    <h3>{{$exam->name}}</h3> --}}
-    {{-- {{'Creador: '.$exam->creator->name }}<br> --}}
-    {{-- {{'Ejercicios: '.$exam->exercises }}<br>
-    {{-- {{'Estudiantes: '.$exam->users}}<br>
-    {{'Examen-Estudiantes: '.$examUser->examExercises}}<br> --}}
-    {{-- <h2>{{'Ejercicios:' }}<br></h2> --}}
-    {{-- <ul>
-        @foreach ($allExercises as $ex)  
-            <li>{{$ex->question}}</li>
-            <ul>
-                <li>{{$ex->answer}}</li>
-            </ul>
-        @endforeach
-    </ul> --}}
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerrar sesión</button>
+            </form>
+        </div>
+    </nav>
+    {{-- <div class="jumbotron">
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </p>
+      </div> --}}
 </body>
+
 </html>
