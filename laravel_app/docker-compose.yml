@@ -24,22 +24,6 @@ services:
       - ./nginx:/etc/nginx/conf.d
     networks:
       - web-net
-
-  swag:
-    image: lscr.io/linuxserver/swag:latest
-    container_name: swag
-    cap_add:
-      - NET_ADMIN
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/Madrid
-      - URL=aulasql.xyz
-      - VALIDATION=http
-    ports:
-      - 443:443
-      - 80:80
-    restart: unless-stopped  
   
   db:
     image: mariadb:10.5
