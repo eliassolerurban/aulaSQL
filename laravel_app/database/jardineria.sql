@@ -22,10 +22,16 @@ CREATE TABLE empleados(
 );
 
 INSERT INTO departamentos VALUES ("ALMACEN","DEP ALMACEN 2.0","Ruela Barrientos, 04, Bajo 2º");
-INSERT INTO departamentos VALUES ("CONTABILIDAD","CONTAWIN","Avinguda Adame, 7, 5º");
-INSERT INTO departamentos VALUES ("SECRETARIA","CONTAWIN","Avinguda Adame, 7, 5º");
+INSERT INTO departamentos VALUES ("CONTABILIDAD","CONTA","Avinguda Adame, 7, 5º");
+INSERT INTO departamentos VALUES ("SECRETARIA","SECRET","Passeig Ferrer, 358, 9º D");
+
 
 insert into empleados values ("12345678A","Antonio Pérez", 1000,14, "ELCHE","CONTABILIDAD", "h");
-insert into empleados values ("12345678b","Juanito Martínez", 2000,12, "ELCHE","ALMACEN", "h");
-insert into empleados values ("12345678c","Juanito Ballesta", 2000, 12,"ELCHE","SECRETARIA", "h");
+insert into empleados values ("34114356C","Héctor Mireles Hijo", 1800, 12,"ELCHE","CONTABILIDAD", "h");
+insert into empleados values ("45117356C","Alejandra Carrasco Segundo", 1000, 12,"ELCHE","CONTABILIDAD", "m");
+insert into empleados values ("34434336C","Raquel Bonilla", 1800, 12,"ELCHE","SECRETARIA", "m");
+insert into empleados values ("34434356C","Yaiza Noriega", 2800, 14,"ELCHE","SECRETARIA", "m");
+insert into empleados values ("34434325D","Rafael Suárez", 1800, 12,"ELCHE","SECRETARIA", "h");
+insert into empleados values ("12345678B","Juanito Martínez", 1800,14, "ELCHE","ALMACEN", "h");
+insert into empleados values ("34314366F","Diana Centeno Hijo", 1800, 12,"ELCHE","ALMACEN", "m");
 
