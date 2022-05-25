@@ -17,7 +17,7 @@ insert into exercises values(null,
 1, null, null);
 
 insert into exercises values(null,
-'Obtener los datos de los empleados con cargo "Secretaria".',
+'Obtener los datos de los empleados con cargo "SECRETARIA".',
 "select * from empleados where lower(cargoE)='secretaria';",
 1, null, null);
 
@@ -41,11 +41,6 @@ insert into exercises values(null,
 2, null, null);
 
 insert into exercises values(null,
-'Mostrar el nombre del último empleado de la lista por orden alfabético.',
-"select max(nomemp) from empleados;",
-2, null, null);
-
-insert into exercises values(null,
 'Hallar el salario más alto, el más bajo y la diferencia entre ellos.',
 "select max(salemp), min(salemp), max(salemp) - min(salemp) from empleados;",
 2, null, null);
@@ -65,36 +60,29 @@ insert into exercises values(null,
 
 
 insert into exercises values(null,
-'Mostrar el número de empleados de sexo femenino y de sexo masculino, por departamento.',
-"select codDepto, sexemp, count(*) from empleados group by codDepto, sexemp;",
+'Mostrar el número de empleados de sexo femenino y de sexo masculino, por cargo.',
+"select cargoE, sexemp, count(*) from empleados group by cargoE, sexemp;",
 3, null, null);
 
 
 insert into exercises values(null,
-'Hallar el salario promedio por departamento.',
-"select codDepto, avg(salemp) from empleados group by codDepto;",
+'Hallar el salario promedio por cargo.',
+"select cargoE, avg(salemp) from empleados group by cargoE;",
 3, null, null);
 
 
 insert into exercises values(null,
 'Hallar los departamentos que tienen más de tres empleados. Mostrar el número de empleados de esos departamentos.',
-"select d.codDepto, d.nombreDpto, count(*) from departamentos d, empleados e where d.codDepto=e.codDepto group by d.codDepto having count(*) >= 3;",
+"select d.codD, d.nombre, count(*) from departamentos d, empleados e where d.codD=e.cargoE group by d.codD having count(*) >= 3;",
 3, null, null);
-
-
-insert into exercises values(null,
-'Mostrar el código y nombre de cada jefe, junto al número de empleados que dirige. Solo los que tengan mas de dos empleados (2 incluido).',
-"select j.nDIEmp, j.nomEmp, count(*) from empleados e, empleados j where e.jefeID=j.nDIEmp group by j.nomEmp having count(*)>=2 order by count(*) desc;",
-3, null, null);
-
 
 insert into exercises values(null,
 'Hallar los departamentos que no tienen empleados',
-"select d.codDepto, d.nombreDpto from departamentos d, empleados e where d.codDepto=e.codDepto group by d.codDepto having count(*) = 0;",
+"select d.codD, d.nombre from departamentos d, empleados e where d.codD=e.cargoE group by d.codD having count(*) = 0;",
 3, null, null);
 
 
 insert into exercises values(null,
 'Mostrar el nombre del departamento cuya suma de salarios sea la más alta, indicando el valor de la suma.',
-"select d.nombreDpto, sum(e.salEmp) from departamentos d, empleados e where d.codDepto=e.codDepto group by d.nombreDpto order by sum(e.salEmp) desc limit 1;",
+"select d.nombre, sum(e.salemp) from departamentos d, empleados e where d.codD=e.cargoE group by d.nombre order by sum(e.salemp) desc limit 1;",
 3, null, null);
