@@ -1,8 +1,8 @@
 -- GRANT USAGE ON *.* TO 'aulaSQL'@localhost IDENTIFIED BY 'pass';
 
-DROP DATABASE jardineria;
-CREATE DATABASE IF NOT EXISTS jardineria;
-USE jardineria;
+DROP DATABASE empresa;
+CREATE DATABASE IF NOT EXISTS empresa;
+USE empresa;
 
 CREATE TABLE departamentos(
     codD VARCHAR(32) PRIMARY KEY,
