@@ -12,7 +12,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">aulaSQL</a>
+        <a class="navbar-brand" href={{ route('inicio') }}>aulaSQL</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,13 +24,13 @@
                     <a class="nav-link" href={{ route('inicio') }}>Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Aulas</a>
+                    <a class="nav-link" href={{ route('classrooms') }}>Aulas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href={{ route('units') }}>Unidades</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Exámenes</a>
+                    <a class="nav-link" href={{ route('exams') }}>Exámenes</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">

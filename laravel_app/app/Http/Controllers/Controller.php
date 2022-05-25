@@ -32,4 +32,16 @@ class Controller extends BaseController
         
         return view('units', compact('units'));
     }
+
+    public function exams() {
+        $exams = Exam::all();
+    
+        return view('exams', compact('exams'));
+    }
+
+    public function classrooms() {
+        $classrooms = Classroom::all();
+    
+        return view('classrooms', compact('classrooms'));
+    }
 }
