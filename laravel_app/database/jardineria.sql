@@ -1,3 +1,5 @@
+-- GRANT USAGE ON *.* TO 'aulaSQL'@localhost IDENTIFIED BY 'pass';
+
 DROP DATABASE jardineria;
 CREATE DATABASE IF NOT EXISTS jardineria;
 USE jardineria;
