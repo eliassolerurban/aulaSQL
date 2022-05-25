@@ -15,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get("/", [Controller::class, 'prueba'])->name('prueba');
+Route::get("/", [Controller::class, 'inicio'])->name('inicio');
+Route::get("/units", [Controller::class, 'units'])->name('units');
