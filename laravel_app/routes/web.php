@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'inicio'])->name('inicio');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 Route::get("/", function() {
     return redirect('/home');
     }
@@ -24,5 +24,6 @@ Route::get("/", function() {
 Route::get("/units", [Controller::class, 'units'])->name('units');
 Route::get("/exams", [Controller::class, 'exams'])->name('exams');
 Route::get("/classrooms", [Controller::class, 'classrooms'])->name('classrooms');
-Auth::routes();
+
+Route::post("/exercise/{id?}", [Controller::class, 'solve_exercise'])->name('solve_exercise');
 

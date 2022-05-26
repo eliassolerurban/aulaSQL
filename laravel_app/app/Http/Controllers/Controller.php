@@ -14,12 +14,6 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
-//drop table classroom_user;
-//drop table exercise_user;
-//drop table exam_exercise;
-//drop table exam_user;
-//drop table exam_exercise_exam_user ;
-
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -28,9 +22,8 @@ class Controller extends BaseController
     {
         $this->middleware('auth');
     }
-
     
-    public function inicio() {
+    public function home() {
         return view('welcome');
     }
     

@@ -51,16 +51,24 @@ class User extends Authenticatable
         return $this->belongsToMany(Classroom::class);
     }
 
-    public function attachClassrooms($classrooms){
-        $this -> classrooms() -> attach($classrooms);
+    public function attachClassrooms($classroom){
+        $this -> classrooms() -> attach($classroom);
     }
     
-    public function detachClassrooms($classrooms){
-        $this -> classrooms() -> detach($classrooms);
+    public function detachClassrooms($classroom){
+        $this -> classrooms() -> detach($classroom);
     }
     
     public function exercises(){
         return $this->belongsToMany(Exercise::class)->withPivot('tries', 'state');
+    }
+
+    public function attachExercises($exercise){
+        $this -> exercises() -> attach($exercise);
+    }
+    
+    public function detachExercise($classrooms){
+        $this -> classrooms() -> detach($classrooms);
     }
     
     public function exams(){
