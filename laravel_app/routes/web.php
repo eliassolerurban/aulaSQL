@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get("/", [Controller::class, 'inicio'])->name('inicio');
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'inicio'])->name('inicio');
+Route::get("/", function() {
+    return redirect('/home');
+    }
+);
 Route::get("/units", [Controller::class, 'units'])->name('units');
 Route::get("/exams", [Controller::class, 'exams'])->name('exams');
 Route::get("/classrooms", [Controller::class, 'classrooms'])->name('classrooms');
+Auth::routes();
+
