@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -23,6 +24,7 @@ class User extends Authenticatable
         'password',
         'role'
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -69,6 +71,15 @@ class User extends Authenticatable
     
     public function detachExercise($classrooms){
         $this -> classrooms() -> detach($classrooms);
+    }
+
+    public function solveExercise($exercise_id, $student_answer){
+        $exercise = Exercise::find($exercise_id);
+        $expected_result = DB::connection('empresa')->select($exercise->answer);
+        $student_result = DB::connection('empresa')->select($student_answer);
+        //TODO: complete method with tries and so on
+        
+        return $expected_result;
     }
     
     public function exams(){

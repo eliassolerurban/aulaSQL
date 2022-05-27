@@ -9,6 +9,7 @@ use App\Models\ExamUser;
 use App\Models\Exercise;
 use App\Models\Unit;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -43,5 +44,22 @@ class Controller extends BaseController
         $classrooms = Classroom::all();
     
         return view('classrooms', compact('classrooms'));
+    }
+
+    public function solve_exercise(Request $request){
+        $request -> validate([
+            'student_answer' => 'required',
+            'exercise_id' => 'required'
+        ]);
+        
+        $student = User::find(auth()->user())->first();
+        // return back()->with('msg', $student);        
+        return(
+            $student->solveExercise($request->id_exercise, $request->student_answer) ?
+                back()->with('msg', 'ok')
+            :
+                back()->with('msg', 'ko')                
+        );
+
     }
 }

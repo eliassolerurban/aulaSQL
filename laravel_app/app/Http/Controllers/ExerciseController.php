@@ -14,9 +14,8 @@ class ExerciseController extends Controller{
         $this->middleware('auth');
     }
 
-    public function solve_exercise($id_exercise){
-        $student = User::find(auth()->user());
-        //TODO: class method solve_exercise for User
-        // $student->solve_exercise($id_exercise);
-    }
+    // public function solve_exercise($id_exercise, $student_answer){
+    //     $student = User::find(auth()->user());
+    //     $student->solve_exercise($id_exercise, $student_answer);
+    // }
 }
