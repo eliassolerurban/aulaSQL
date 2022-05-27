@@ -53,12 +53,11 @@ class Controller extends BaseController
         ]);
         
         $student = User::find(auth()->user())->first();
-        // return back()->with('msg', $student);        
         return(
-            $student->solveExercise($request->id_exercise, $request->student_answer) ?
-                back()->with('msg', 'ok')
+            $student->solve_exercise($request->exercise_id, $request->student_answer) ?
+                back()->with("check$request->exercise_id", 'ok')
             :
-                back()->with('msg', 'ko')                
+                back()->with("check$request->exercise_id", 'ko')                
         );
 
     }

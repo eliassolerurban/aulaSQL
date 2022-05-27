@@ -73,13 +73,13 @@ class User extends Authenticatable
         $this -> classrooms() -> detach($classrooms);
     }
 
-    public function solveExercise($exercise_id, $student_answer){
-        $exercise = Exercise::find($exercise_id);
+    public function solve_exercise($exercise_id, $student_answer){
+        $exercise = Exercise::find($exercise_id)->where('id', $exercise_id)->first();
         $expected_result = DB::connection('empresa')->select($exercise->answer);
         $student_result = DB::connection('empresa')->select($student_answer);
         //TODO: complete method with tries and so on
         
-        return $expected_result;
+        return $expected_result == $student_result;
     }
     
     public function exams(){
