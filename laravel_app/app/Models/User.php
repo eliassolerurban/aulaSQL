@@ -57,31 +57,50 @@ class User extends Authenticatable
         return $this->belongsToMany(Exercise::class)->withPivot('tries', 'state');
     }
 
-    public function check_exercise_untried($exercise_id){
-        $student = User::find(auth()->user())->first();
-        return $student->exercises()->where('exercise_id', $exercise_id) ? false : true;
+    public static function current_user(){
+        return User::find(auth()->user())->first();
     }
 
-    public function check_exercise_failed($exercise_id){
-        $student = User::find(auth()->user())->first();
-        return $student->exercises()->where('exercise_id', $exercise_id)->first()->state == 'failed';
+    public function exercise_tried($exercise_id){
+        $student = User::current_user();
+        return $student->exercises()->where('exercise_id', $exercise_id)->count() > 0;
+    }
+
+    public function exercise_failed($exercise_id){
+        $student = User::current_user();
+        return $student->exercises()->where('exercise_id', $exercise_id)->first()->pivot->state == 'failed';
+    }
+
+    public function set_exercise_state($exercise_id, $expected_result, $student_result){
+        $student = User::current_user();
+        
+        //TODO: make this work
+        if($student->exercises()->where('exercise_id', $exercise_id)->first() and
+            $student->exercises()->where('exercise_id', $exercise_id)->first()->pivot->state === 'passed'){
+            return 'passed';
+        }
+        return $expected_result === $student_result ? 'passed' : 'failed' ;
     }
 
     public function solve_exercise($exercise_id, $student_answer){
-        $student = User::find(auth()->user())->first();
+        $student = User::current_user();
         $exercise = Exercise::find($exercise_id)->where('id', $exercise_id)->first();
         
         $expected_result = DB::connection('empresa')->select($exercise->answer);
-        $student_result = DB::connection('empresa')->select($student_answer);    
+        $student_result = DB::connection('empresa')->select($student_answer);
         
-        $state = $expected_result == $student_result ? 'passed' : 'failed';
-
-        if($student->check_exercise_untried($exercise_id)){
-            $student->exercises()->attach($exercise->id, ['tries' => '0', 'state' => $state]);        
+        $state = $student->set_exercise_state($exercise_id, $expected_result, $student_result); 
+        
+        if(!$student->exercise_tried($exercise_id)){
+            $student->exercises()->attach($exercise->id, ['tries' => 1, 'state' => $state]);
         }
-        //TODO: update exercise tries not working yet
-        if ($student->check_exercise_failed($exercise->id)){
-            $student->exercises()->updateExistingPivot($exercise->id, ['tries' => 1]);        
+
+        else if($state === 'failed'){
+            $tries = $student->exercises()->where('exercise_id', $exercise_id)->first()->pivot->tries;  
+            $student->exercises()->updateExistingPivot($exercise->id, ['tries' => ++$tries]);
+        }
+        else{
+            $student->exercises()->updateExistingPivot($exercise->id, ['state' => $state]);
         }
 
         return $expected_result == $student_result;

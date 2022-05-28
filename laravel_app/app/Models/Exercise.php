@@ -10,7 +10,7 @@ class Exercise extends Model
     protected $table = 'exercises';
     
     public function users(){
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot('tries', 'state');
     }
     
     public function unit(){
