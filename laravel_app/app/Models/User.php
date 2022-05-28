@@ -52,33 +52,38 @@ class User extends Authenticatable
     public function classrooms(){
         return $this->belongsToMany(Classroom::class);
     }
-
-    public function attachClassrooms($classroom){
-        $this -> classrooms() -> attach($classroom);
-    }
-    
-    public function detachClassrooms($classroom){
-        $this -> classrooms() -> detach($classroom);
-    }
     
     public function exercises(){
         return $this->belongsToMany(Exercise::class)->withPivot('tries', 'state');
     }
 
-    public function attachExercises($exercise){
-        $this -> exercises() -> attach($exercise);
+    public function check_exercise_untried($exercise_id){
+        $student = User::find(auth()->user())->first();
+        return $student->exercises()->where('exercise_id', $exercise_id) ? false : true;
     }
-    
-    public function detachExercise($classrooms){
-        $this -> classrooms() -> detach($classrooms);
+
+    public function check_exercise_failed($exercise_id){
+        $student = User::find(auth()->user())->first();
+        return $student->exercises()->where('exercise_id', $exercise_id)->first()->state == 'failed';
     }
 
     public function solve_exercise($exercise_id, $student_answer){
+        $student = User::find(auth()->user())->first();
         $exercise = Exercise::find($exercise_id)->where('id', $exercise_id)->first();
-        $expected_result = DB::connection('empresa')->select($exercise->answer);
-        $student_result = DB::connection('empresa')->select($student_answer);
-        //TODO: complete method with tries and so on
         
+        $expected_result = DB::connection('empresa')->select($exercise->answer);
+        $student_result = DB::connection('empresa')->select($student_answer);    
+        
+        $state = $expected_result == $student_result ? 'passed' : 'failed';
+
+        if($student->check_exercise_untried($exercise_id)){
+            $student->exercises()->attach($exercise->id, ['tries' => '0', 'state' => $state]);        
+        }
+        //TODO: update exercise tries not working yet
+        if ($student->check_exercise_failed($exercise->id)){
+            $student->exercises()->updateExistingPivot($exercise->id, ['tries' => 1]);        
+        }
+
         return $expected_result == $student_result;
     }
     
