@@ -57,9 +57,9 @@ class Controller extends BaseController
         $unit = $exercise->unit;
         return(
             $student->solve_exercise($request->exercise_id, $request->student_answer) ?
-                back()->with("check$request->exercise_id", 'ok')
+                back()->with("_passed$request->exercise_id" , true)
             :
-                back()->with("check$request->exercise_id", $unit)                
+                back()->with("_failed$request->exercise_id" , true)                
         );
 
     }

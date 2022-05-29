@@ -8,10 +8,13 @@
     <h2>{{$unit->title}}</h2>
     <h4>Ejercicios:</h4>
     @foreach ($unit->exercises as $exercise)
-        @if(session("check$exercise->id"))
-            <h1>{{session("check$exercise->id")}}</h1>
+        @if(session("_passed$exercise->id"))
+            <h1>¡Correcto!</h1>
         @endif
-    <p class="exercise-question">{{$exercise->question}}</p>
+        @if(session("_failed$exercise->id"))
+            <h1>{{$exercise->unit->clue}}</h1>
+        @endif
+<p class="exercise-question">{{$exercise->question}}</p>
                 <form method='post' action={{ route("solve_exercise") }}>
                     @csrf
                     <input type="hidden" name="exercise_id" value={{ $exercise->id }}>
@@ -21,7 +24,7 @@
                 <br>
                 <br>
                 <br>
-            @endforeach
+    @endforeach
         </div>
     @endforeach
 @endsection
