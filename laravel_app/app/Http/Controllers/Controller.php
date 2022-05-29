@@ -29,9 +29,14 @@ class Controller extends BaseController
     }
     
     public function units() {
-            $units = Unit::all();
+        $units = Unit::all();
         
-        return view('units', compact('units'));
+        return(
+            auth()->user()->role === 'alumno' ?
+                view('units_alumno', compact('units'))
+            :
+                view('units_profesor', compact('units'))
+        );
     }
 
     public function exams() {
