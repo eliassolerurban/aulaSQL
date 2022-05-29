@@ -9,10 +9,10 @@
     <h4>Ejercicios:</h4>
     @foreach ($unit->exercises as $exercise)
         @if(session("_passed$exercise->id"))
-            <h1>¡Correcto!</h1>
+            <script>window.alert('¡Correcto!')</script>
         @endif
         @if(session("_failed$exercise->id"))
-            <h1>{{$exercise->unit->clue}}</h1>
+            <script>window.alert('No es el resultado que se esperaba... \n' + @json($exercise->unit).clue)</script>
         @endif
 <p class="exercise-question">{{$exercise->question}}</p>
                 <form method='post' action={{ route("solve_exercise") }}>
