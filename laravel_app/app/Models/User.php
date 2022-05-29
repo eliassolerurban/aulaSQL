@@ -73,8 +73,7 @@ class User extends Authenticatable
 
     public function set_exercise_state($exercise_id, $expected_result, $student_result){
         $student = User::current_user();
-        
-        //TODO: make this work
+
         if($student->exercises()->where('exercise_id', $exercise_id)->first() and
             $student->exercises()->where('exercise_id', $exercise_id)->first()->pivot->state === 'passed'){
             return 'passed';
@@ -82,6 +81,7 @@ class User extends Authenticatable
         return $expected_result === $student_result ? 'passed' : 'failed' ;
     }
 
+    //refactor
     public function solve_exercise($exercise_id, $student_answer){
         $student = User::current_user();
         $exercise = Exercise::find($exercise_id)->where('id', $exercise_id)->first();
@@ -89,20 +89,26 @@ class User extends Authenticatable
         $expected_result = DB::connection('empresa')->select($exercise->answer);
         $student_result = DB::connection('empresa')->select($student_answer);
         
-        $state = $student->set_exercise_state($exercise_id, $expected_result, $student_result); 
+        $last_try = $student->exercises()->where('exercise_id', $exercise_id)->first();
+        $last_try_state = $last_try ? $last_try->pivot->state : null;
+
+        if($last_try_state === 'passed'){
+            return $expected_result == $student_result;
+        }        
+
+        $new_state = $expected_result == $student_result ? 'passed' : 'failed';
         
         if(!$student->exercise_tried($exercise_id)){
-            $student->exercises()->attach($exercise->id, ['tries' => 1, 'state' => $state]);
+            $student->exercises()->attach($exercise->id, ['tries' => 0, 'state' => $new_state]);
         }
 
-        else if($state === 'failed'){
-            $tries = $student->exercises()->where('exercise_id', $exercise_id)->first()->pivot->tries;  
-            $student->exercises()->updateExistingPivot($exercise->id, ['tries' => ++$tries]);
-        }
         else{
-            $student->exercises()->updateExistingPivot($exercise->id, ['state' => $state]);
+            $student->exercises()->updateExistingPivot($exercise->id, ['state' => $new_state]);
         }
-
+        
+        $tries = $student->exercises()->where('exercise_id', $exercise_id)->first()->pivot->tries;
+        $student->exercises()->updateExistingPivot($exercise->id, ['tries' => ++$tries]);
+        
         return $expected_result == $student_result;
     }
     
