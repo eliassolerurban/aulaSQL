@@ -53,11 +53,12 @@ class Controller extends BaseController
         ]);
         
         $student = User::find(auth()->user())->first();
+        $unit = Exercise::find($request->exercise_id)->first()->unit;
         return(
             $student->solve_exercise($request->exercise_id, $request->student_answer) ?
-                back()->with("check$request->exercise_id", 'ok')
+                back()->with($request->exercise_id, 'ok')
             :
-                back()->with("check$request->exercise_id", 'ko')                
+                back()->with($request->exercise_id, $unit->clue)                
         );
 
     }

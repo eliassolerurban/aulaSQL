@@ -66,22 +66,6 @@ class User extends Authenticatable
         return $student->exercises()->where('exercise_id', $exercise_id)->count() > 0;
     }
 
-    public function exercise_failed($exercise_id){
-        $student = User::current_user();
-        return $student->exercises()->where('exercise_id', $exercise_id)->first()->pivot->state == 'failed';
-    }
-
-    public function set_exercise_state($exercise_id, $expected_result, $student_result){
-        $student = User::current_user();
-
-        if($student->exercises()->where('exercise_id', $exercise_id)->first() and
-            $student->exercises()->where('exercise_id', $exercise_id)->first()->pivot->state === 'passed'){
-            return 'passed';
-        }
-        return $expected_result === $student_result ? 'passed' : 'failed' ;
-    }
-
-    //refactor
     public function solve_exercise($exercise_id, $student_answer){
         $student = User::current_user();
         $exercise = Exercise::find($exercise_id)->where('id', $exercise_id)->first();
@@ -95,6 +79,7 @@ class User extends Authenticatable
         if($last_try_state === 'passed'){
             return $expected_result == $student_result;
         }        
+
 
         $new_state = $expected_result == $student_result ? 'passed' : 'failed';
         
