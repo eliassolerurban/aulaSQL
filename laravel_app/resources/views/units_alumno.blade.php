@@ -12,7 +12,7 @@
             <script>window.alert('¡Correcto!')</script>
         @endif
         @if(session("_failed$exercise->id"))
-            <script>window.alert('No es el resultado que se esperaba... \n'@json($exercise->unit).clue)</script>
+            <script>window.alert("No es el resultado que se esperaba... \n" + @json($exercise->unit).clue)</script>
         @endif
 <p class="exercise-question">{{$exercise->question}}</p>
                 <form method='post' action={{ route("solve_exercise") }}>
