@@ -25,4 +25,5 @@ Route::get("/units", [Controller::class, 'units'])->name('units');
 Route::get("/exams", [Controller::class, 'exams'])->name('exams');
 Route::get("/classrooms", [Controller::class, 'classrooms'])->name('classrooms');
 Route::post("/solve_exercise", [Controller::class, 'solve_exercise'])->name('solve_exercise');
+Route::post("/create_classroom", [Controller::class, 'create_classroom'])->name('create_classroom');
 

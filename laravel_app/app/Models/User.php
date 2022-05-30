@@ -101,6 +101,15 @@ class User extends Authenticatable
         return $this->belongsToMany(Exam::class);
     }
 
+    public function create_classroom($classroom_name){
+        $teacher = User::find(auth()->user()->id);
+        $new_classroom = new Classroom();
+        $new_classroom->name = $classroom_name;
+        $new_classroom->creator_id = $teacher->id;
+        $new_classroom->save();
+
+    }
+
     public function created_classrooms(){
         return $this->hasMany(Classroom::class);
     }

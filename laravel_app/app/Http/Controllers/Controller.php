@@ -46,9 +46,15 @@ class Controller extends BaseController
     }
 
     public function classrooms() {
+        $student = User::find(auth()->user())->first();
         $classrooms = Classroom::all();
-    
-        return view('classrooms', compact('classrooms'));
+        
+        return(
+            auth()->user()->role === 'alumno' ?
+                view('classrooms_alumno', compact('classrooms'))
+            :
+            view('classrooms_profesor', compact('classrooms'))
+        );
     }
 
     public function solve_exercise(Request $request){
@@ -58,8 +64,6 @@ class Controller extends BaseController
         ]);
         
         $student = User::find(auth()->user())->first();
-        $exercise = Exercise::find($request->exercise_id)->first();
-        $unit = $exercise->unit;
         return(
             $student->solve_exercise($request->exercise_id, $request->student_answer) ?
                 back()->with("_passed$request->exercise_id" , true)
@@ -67,5 +71,15 @@ class Controller extends BaseController
                 back()->with("_failed$request->exercise_id" , true)                
         );
 
+    }
+
+    public function create_classroom(Request $request){
+        $request -> validate([
+            'classroom_name' => 'required'
+        ]);
+
+        $teacher = User::find(auth()->user())->first();
+        $teacher->create_classroom($request->classroom_name);
+        return back();
     }
 }

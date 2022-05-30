@@ -1,6 +1,6 @@
 @extends('static')
 @section('content')
-    @foreach ($classrooms as $classroom)
+    {{-- @foreach ($classrooms as $classroom)
         <div class="classroom-container">
             <h2>{{$classroom->name}}</h2>
             <h4>Creado por: {{ $classroom->creator->name }}</h4>
@@ -14,6 +14,6 @@
                 <br>
             @endforeach
         </div>
-    @endforeach
+    @endforeach --}}
 @endsection
 
