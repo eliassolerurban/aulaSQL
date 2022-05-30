@@ -26,4 +26,6 @@ Route::get("/exams", [Controller::class, 'exams'])->name('exams');
 Route::get("/classrooms", [Controller::class, 'classrooms'])->name('classrooms');
 Route::post("/solve_exercise", [Controller::class, 'solve_exercise'])->name('solve_exercise');
 Route::post("/create_classroom", [Controller::class, 'create_classroom'])->name('create_classroom');
+Route::get("/add_student_to_classroom/{id?}", [Controller::class, 'add_student_to_classroom_view'])->name('add_student_to_classroom_view');
+Route::post("/add_student_to_classroom/{id?}", [Controller::class, 'add_student_to_classroom'])->name('add_student_to_classroom');
 

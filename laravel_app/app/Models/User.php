@@ -113,4 +113,9 @@ class User extends Authenticatable
     public function created_classrooms(){
         return $this->hasMany(Classroom::class);
     }
+
+    public function add_student_to_classroom($student_id, $classroom_id){
+        $student = User::find($student_id)->first();
+        $student->classrooms()->attach($classroom_id);
+    }
 }

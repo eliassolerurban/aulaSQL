@@ -11,7 +11,7 @@
         @foreach ($classrooms as $classroom)
             <div class="classroom-container">
                 <h2>{{$classroom->name}}</h2>
-                <a href={{route()}}>Añadir un alumno</a>
+                <a href={{route('add_student_to_classroom', $classroom->id)}}>Añadir un alumno</a>
                 {{-- <h4>Creado por: {{ $classroom->creator->name}}</h4> --}}
                 {{-- <h4>Alumnos en este aula:</h4>
                 @foreach ($classroom->users as $user)
