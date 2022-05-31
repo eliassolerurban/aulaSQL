@@ -1,5 +1,6 @@
 @extends('static')
 @section('content')
+
     {{-- @foreach ($classrooms as $classroom)
         <div class="classroom-container">
             <h2>{{$classroom->name}}</h2>

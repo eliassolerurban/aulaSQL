@@ -48,12 +48,13 @@ class Controller extends BaseController
     public function classrooms() {
         $student = User::find(auth()->user())->first();
         $classrooms = Classroom::all();
+        $units = Unit::all();
         
         return(
             auth()->user()->role === 'alumno' ?
                 view('classrooms_alumno', compact('classrooms'))
             :
-            view('classrooms_profesor', compact('classrooms'))
+            view('classrooms_profesor', compact('classrooms', 'units'))
         );
     }
 
