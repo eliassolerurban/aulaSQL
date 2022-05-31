@@ -84,19 +84,19 @@ class Controller extends BaseController
     }
 
     public function add_student_to_classroom(Request $request){
-        $teacher = User::find(auth()->user());
+        $teacher = User::find(auth()->user())->first();
         $request -> validate([
             'student_email' => 'required',
             'classroom_id' => 'required' //hidden
         ]);
         
-        $student = User::where('email', $request->studen_email)->first() ?? null;
+        $student = User::where('email', $request->student_email)->first() ?? null;
         
-        if($student and $student->role==='alumno'){
-            $teacher->add_student_to_classroom_to_classroom($student->id, $request->classroom_id);
-            return back()->with('msg'.$request->classroom_id, "¡El alumno con email $student->email se ha añadido correctamente!");
+        if($student and $student->role === 'alumno'){
+            $teacher->add_student_to_classroom($student->id, $request->classroom_id);
+            return back()->with('ok'.$request->classroom_id, "¡El alumno con email $student->email se ha añadido correctamente!");
         }
-        return back()->with('msg'.$request->classroom_id, 'Vaya, parece que el alumno no existe...');
+        return back()->with('ko'.$request->classroom_id, 'Alumno: '.$student);
     }
 
     public function add_student_to_classroom_view($classroom_id){

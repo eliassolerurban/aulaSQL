@@ -9,8 +9,11 @@
     <button type="submit" class="btn btn-primary">Añadir</button>
 </form>
 //TODO: make this work
-@if(session('msg'.$classroom->id))
-    <script>window.alert(@json(session('msg'.$classroom->id)))</script>
+@if(session('ok'.$classroom->id))
+    <script>window.alert(@json(session('ok'.$classroom->id)))</script>
+@endif
+@if(session('ko'.$classroom->id))
+    <script>window.alert(@json(session('ko'.$classroom->id)))</script>
 @endif
 
 @endsection
