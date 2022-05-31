@@ -45,16 +45,18 @@ class Controller extends BaseController
         return view('exams', compact('exams'));
     }
 
+
+    //TODO: check my_classrooms 
     public function classrooms() {
-        $student = User::find(auth()->user())->first();
-        $classrooms = Classroom::all();
+        $user = User::find(auth()->user())->first();
+        $my_classrooms = $user->role === 'alumno' ? $user->classrooms : $user->created_classrooms;
         $units = Unit::all();
-        
+
         return(
             auth()->user()->role === 'alumno' ?
-                view('classrooms_alumno', compact('classrooms'))
+                view('classrooms_alumno', compact('classrooms', 'my_classrooms', 'units'))
             :
-            view('classrooms_profesor', compact('classrooms', 'units'))
+            view('classrooms_profesor', compact('my_classrooms', 'units'))
         );
     }
 
