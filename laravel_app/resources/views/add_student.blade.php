@@ -8,7 +8,6 @@
     <input type="hidden" name="classroom_id" value={{ $classroom->id }}>
     <button type="submit" class="btn btn-primary">Añadir</button>
 </form>
-//TODO: make this work
 @if(session('ok'.$classroom->id))
     <script>window.alert(@json(session('ok'.$classroom->id)))</script>
 @endif

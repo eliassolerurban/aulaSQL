@@ -12,16 +12,19 @@
             <div class="classroom-container">
                 <h2>{{$classroom->name}}</h2>
                 <a href={{route('add_student_to_classroom', $classroom->id)}}>Añadir un alumno</a>
+                @if($classroom->users->count())
+                    <h4>Alumnos en este aula:</h4>
+                    @foreach ($classroom->users as $user)
+                        <div class="student-data">
+                            <p>{{ $user->email }}</p>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                    @endforeach
+                @endif
                 {{-- <h4>Creado por: {{ $classroom->creator->name}}</h4> --}}
-                {{-- <h4>Alumnos en este aula:</h4>
-                @foreach ($classroom->users as $user)
-                    <div class="student-data">
-                        <p>$user->name</p>
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                @endforeach --}}
+                {{-- <h4>Alumnos en este aula:</h4> --}}
             </div>
         @endforeach
     @endif
