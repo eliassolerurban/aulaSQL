@@ -14,7 +14,8 @@
             <div class="classroom-container">
                 @if($classroom->users->count())
                 <h4>Alumnos en este aula:</h4>
-                @foreach ($classroom->users as $user)
+                <h1>{{$classroom->users}}</h1>
+                {{-- @foreach ($classroom->users as $user)
                     <div class="student-data">
                         <p>{{ $user->email }}</p>
                             @foreach($units as $unit)
@@ -30,7 +31,7 @@
                                     </ul>
                                 </div>
                             @endforeach
-                @endforeach
+                @endforeach --}}
                     </div>
             @endif
             </div>

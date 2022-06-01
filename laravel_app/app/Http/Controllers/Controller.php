@@ -98,7 +98,7 @@ class Controller extends BaseController
         
         $request -> validate([
             'student_email' => 'required',
-            'classroom_id' => 'required' //hidden
+            'classroom_id' => 'required'
         ]);
         
         $student = User::where('email', $request->student_email)->first() ?? null;
