@@ -49,14 +49,23 @@ class Controller extends BaseController
     //TODO: check my_classrooms 
     public function classrooms() {
         $user = User::find(auth()->user())->first();
-        $my_classrooms = $user->role === 'alumno' ? $user->classrooms : $user->created_classrooms;
+        $classrooms = Classroom::all();
+        if($user->role === 'alumno'){
+            $my_classrooms = $user->classrooms ? $user->classrooms : []; 
+        }
+        
+        // if($user->role === 'profesor'){
+        //     $my_classrooms = $user->created_classrooms ? $user->created_classrooms : []; 
+        // }
+
+        // $my_classrooms = $user->role === 'alumno' ? $user->classrooms : $user->created_classrooms;
         $units = Unit::all();
 
         return(
             auth()->user()->role === 'alumno' ?
                 view('classrooms_alumno', compact('classrooms', 'my_classrooms', 'units'))
             :
-            view('classrooms_profesor', compact('my_classrooms', 'units'))
+            view('classrooms_profesor', compact('classrooms', 'units'))
         );
     }
 

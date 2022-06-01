@@ -7,8 +7,8 @@
     <input type="text" name="classroom_name" placeholder="Nombre del aula: ">
     <button type="submit" class="btn btn-primary">Crear</button>
 </form>
-    @if($my_classrooms->count())
-        @foreach ($my_classrooms as $classroom)
+    @if($classrooms->count())
+        @foreach ($classrooms as $classroom)
             <div class="classroom-container">
                 <h2>{{$classroom->name}}</h2>
                 <a href={{route('add_student_to_classroom', $classroom->id)}}>Añadir un alumno</a>
