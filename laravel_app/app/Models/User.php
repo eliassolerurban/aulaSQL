@@ -66,7 +66,6 @@ class User extends Authenticatable
         return $student->exercises()->where('exercise_id', $exercise_id)->count() > 0;
     }
 
-    //TODO: catch sql exception
     public function solve_exercise($exercise_id, $student_answer){
         $student = User::current_user();
         $exercise = Exercise::find($exercise_id)->where('id', $exercise_id)->first();
