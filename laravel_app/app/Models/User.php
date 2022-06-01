@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Exception;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -71,7 +72,13 @@ class User extends Authenticatable
         $exercise = Exercise::find($exercise_id)->where('id', $exercise_id)->first();
         
         $expected_result = DB::connection('empresa')->select($exercise->answer);
-        $student_result = DB::connection('empresa')->select($student_answer);
+        
+        try{
+            $student_result = DB::connection('empresa')->select($student_answer);
+        }
+        catch(Exception $e){
+            $student_result = false;
+        }
         
         $last_try = $student->exercises()->where('exercise_id', $exercise_id)->first();
         $last_try_state = $last_try ? $last_try->pivot->state : null;
