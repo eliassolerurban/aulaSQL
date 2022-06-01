@@ -50,8 +50,12 @@ class Controller extends BaseController
     public function classrooms() {
         $user = User::find(auth()->user())->first();
         $classrooms = Classroom::all();
+        
         if($user->role === 'alumno'){
             $my_classrooms = $user->classrooms ? $user->classrooms : []; 
+        }
+        else{
+            $my_classrooms = $classrooms->where('creator_id', auth()->user()->id);    
         }
         
         // if($user->role === 'profesor'){
@@ -63,9 +67,9 @@ class Controller extends BaseController
 
         return(
             auth()->user()->role === 'alumno' ?
-                view('classrooms_alumno', compact('classrooms', 'my_classrooms', 'units'))
+                view('classrooms_alumno', compact('my_classrooms', 'units'))
             :
-            view('classrooms_profesor', compact('classrooms', 'units'))
+            view('classrooms_profesor', compact('my_classrooms', 'units'))
         );
     }
 
