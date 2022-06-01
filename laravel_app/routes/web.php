@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,4 +29,4 @@ Route::post("/solve_exercise", [Controller::class, 'solve_exercise'])->name('sol
 Route::post("/create_classroom", [Controller::class, 'create_classroom'])->name('create_classroom');
 Route::get("/add_student_to_classroom/{id?}", [Controller::class, 'add_student_to_classroom_view'])->name('add_student_to_classroom_view');
 Route::post("/add_student_to_classroom/{id?}", [Controller::class, 'add_student_to_classroom'])->name('add_student_to_classroom');
-
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
