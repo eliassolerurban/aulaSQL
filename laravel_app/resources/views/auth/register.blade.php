@@ -14,8 +14,8 @@
                             <label for="role" class="col-md-4 col-form-label text-md-end">Elige un rol: </label>
                             <div class="col-md-6">
                                 <select id="role" name="role" required>
-                                    <option value="profesor">Profesor</option>
                                     <option value="alumno">Alumno</option>
+                                    <option value="profesor">Profesor</option>
                                 </select>
                             </div>                            
                         <div class="row mb-3">
