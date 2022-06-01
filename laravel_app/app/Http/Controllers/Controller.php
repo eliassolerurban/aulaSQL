@@ -9,6 +9,7 @@ use App\Models\ExamUser;
 use App\Models\Exercise;
 use App\Models\Unit;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -103,7 +104,7 @@ class Controller extends BaseController
         $student = User::where('email', $request->student_email)->first() ?? null;
         try{
             $student_in_classroom = $student->classrooms->where('id', $request->classroom_id)->first();
-        } catch(e()){
+        } catch(Exception $e){
             $student_in_classroom = false;
         }
         
