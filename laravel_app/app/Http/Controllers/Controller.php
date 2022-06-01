@@ -101,7 +101,11 @@ class Controller extends BaseController
         ]);
         
         $student = User::where('email', $request->student_email)->first() ?? null;
-        $student_in_classroom = $student->classrooms->where('id', $request->classroom_id)->first(); 
+        try{
+            $student_in_classroom = $student->classrooms->where('id', $request->classroom_id)->first();
+        } catch(e()){
+            $student_in_classroom = false;
+        }
         
         if($student and $student->role === 'alumno'){
             if($student_in_classroom){
