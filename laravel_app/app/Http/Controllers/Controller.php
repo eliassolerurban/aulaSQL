@@ -46,24 +46,17 @@ class Controller extends BaseController
     }
 
 
-    //TODO: check my_classrooms 
     public function classrooms() {
         $user = User::find(auth()->user())->first();
+        $units = Unit::all();
         $classrooms = Classroom::all();
-        
+
         if($user->role === 'alumno'){
             $my_classrooms = $user->classrooms ? $user->classrooms : []; 
         }
         else{
             $my_classrooms = $classrooms->where('creator_id', auth()->user()->id);    
         }
-        
-        // if($user->role === 'profesor'){
-        //     $my_classrooms = $user->created_classrooms ? $user->created_classrooms : []; 
-        // }
-
-        // $my_classrooms = $user->role === 'alumno' ? $user->classrooms : $user->created_classrooms;
-        $units = Unit::all();
 
         return(
             auth()->user()->role === 'alumno' ?
@@ -101,14 +94,19 @@ class Controller extends BaseController
 
     public function add_student_to_classroom(Request $request){
         $teacher = User::find(auth()->user())->first();
+        
         $request -> validate([
             'student_email' => 'required',
             'classroom_id' => 'required' //hidden
         ]);
         
         $student = User::where('email', $request->student_email)->first() ?? null;
+        $student_in_classroom = $student->classrooms->where('id', $request->classroom_id)->first(); 
         
         if($student and $student->role === 'alumno'){
+            if($student_in_classroom){
+                return back()->with('ok'.$request->classroom_id, "¡El alumno con email $student->email ya estaba en este aula!");
+            }
             $teacher->add_student_to_classroom($student->id, $request->classroom_id);
             return back()->with('ok'.$request->classroom_id, "¡El alumno con email $student->email se ha añadido correctamente!");
         }
