@@ -15,6 +15,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use PhpParser\Builder\Class_;
 
 class Controller extends BaseController
 {
@@ -51,9 +52,14 @@ class Controller extends BaseController
         $user = User::find(auth()->user())->first();
         $units = Unit::all();
         $classrooms = Classroom::all();
-
+        
         if($user->role === 'alumno'){
-            $my_classrooms = $user->classrooms ? $user->classrooms : []; 
+            try{
+                $my_classrooms = $user->classrooms ? $user->classrooms : []; 
+            }
+            catch(Exception $e){
+                $my_classrooms = [];
+            }
         }
         else{
             $my_classrooms = $classrooms->where('creator_id', auth()->user()->id);    
@@ -101,7 +107,8 @@ class Controller extends BaseController
             'classroom_id' => 'required'
         ]);
         
-        $student = User::where('email', $request->student_email)->first() ?? null;
+        $student = User::where('email', $request->student_email)->get()->first() ?? null;
+        
         try{
             $student_in_classroom = $student->classrooms->where('id', $request->classroom_id)->first();
         } catch(Exception $e){
@@ -112,9 +119,11 @@ class Controller extends BaseController
             if($student_in_classroom){
                 return back()->with('ok'.$request->classroom_id, "¡El alumno con email $student->email ya estaba en este aula!");
             }
+
             $teacher->add_student_to_classroom($student->id, $request->classroom_id);
-            return back()->with('ok'.$request->classroom_id, "¡El alumno con email $student->email se ha añadido correctamente!");
+            return back()->with('ok'.$request->classroom_id, "¡El alumno con email $student->email se ha añadido correctamente al aula $request->classroom_id");
         }
+        
         return back()->with('ko'.$request->classroom_id, 'Vaya... parece que no existe el alumno con este email');
     }
 

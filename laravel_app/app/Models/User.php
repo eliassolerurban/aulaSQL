@@ -121,9 +121,8 @@ class User extends Authenticatable
         return $this->hasMany(Classroom::class);
     }
 
-    //TODO: 
     public function add_student_to_classroom($student_id, $classroom_id){
-        $student = User::find($student_id)->first();
-        $student->classrooms()->attach($classroom_id);
+        $classroom = Classroom::find($classroom_id);
+        $classroom->users()->attach($student_id);
     }
 }

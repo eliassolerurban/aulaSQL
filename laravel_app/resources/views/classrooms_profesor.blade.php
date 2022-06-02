@@ -11,15 +11,18 @@
         @foreach ($my_classrooms as $classroom)
             <h2>{{$classroom->name}}</h2>
             <a href={{route('add_student_to_classroom', $classroom->id)}}>Añadir un alumno</a>
+
             <div class="classroom-container">
                 @if($classroom->users->count())
                 <h4>Alumnos en este aula:</h4>
-                <h1>{{$classroom->users}}</h1>
-                {{-- @foreach ($classroom->users as $user)
+                @foreach ($classroom->users as $user)
+                    
                     <div class="student-data">
                         <p>{{ $user->email }}</p>
                             @foreach($units as $unit)
+                                
                                 <div class="unit-block">
+                                    @if($user->exercises->where('unit_id', $unit->id))
                                     <h3>{{$unit->title}}</h3>
                                     <ul>
                                         @foreach($user->exercises->where('unit_id', $unit->id) as $exercise)
@@ -29,12 +32,15 @@
                                             <p>Estado: {{ $exercise->pivot->state === 'passed' ? 'Correcto' : 'Incorrecto' }}</p>
                                         @endforeach
                                     </ul>
+                                    @endif
                                 </div>
                             @endforeach
-                @endforeach --}}
+                @endforeach
                     </div>
+                    
             @endif
             </div>
+
         @endforeach
     @endif
 @endsection
