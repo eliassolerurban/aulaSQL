@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    {{-- //TODO: hover in title  --}}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="aulaSQL navbar-brand" href={{ route('home') }}>aulaSQL</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -34,6 +35,7 @@
                     <a class="nav-link" href={{ route('exams') }}>Exámenes</a>
                 </li>
             </ul>
+            {{-- //TODO: profile icon dropdown with user and logout --}}
             <form class="form-inline my-2 my-lg-0">
                 <a href={{ route('logout') }} class="btn aulaSQL my-2 my-sm-0" type="submit">Cerrar sesión</a>
             </form>

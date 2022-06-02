@@ -72,17 +72,6 @@ insert into exercises values(null,
 
 
 insert into exercises values(null,
-'Hallar los departamentos que tienen más de tres empleados. Mostrar el número de empleados de esos departamentos.',
-"select d.codD, d.nombre, count(*) from departamentos d, empleados e where d.codD=e.cargoE group by d.codD having count(*) >= 3;",
-3, null, null);
-
-insert into exercises values(null,
-'Hallar los departamentos que no tienen empleados',
-"select d.codD, d.nombre from departamentos d, empleados e where d.codD=e.cargoE group by d.codD having count(*) = 0;",
-3, null, null);
-
-
-insert into exercises values(null,
 'Mostrar el nombre del departamento cuya suma de salarios sea la más alta, indicando el valor de la suma.',
 "select d.nombre, sum(e.salemp) from departamentos d, empleados e where d.codD=e.cargoE group by d.nombre order by sum(e.salemp) desc limit 1;",
 3, null, null);

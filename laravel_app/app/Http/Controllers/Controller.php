@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Classroom;
 use App\Models\Exam;
-use App\Models\ExamExercise;
-use App\Models\ExamUser;
-use App\Models\Exercise;
 use App\Models\Unit;
 use App\Models\User;
 use Exception;
@@ -15,7 +12,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use PhpParser\Builder\Class_;
 
 class Controller extends BaseController
 {
