@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+:root {
+    --student-color: #65d084;
+    --teacher-color: #5e75ce;
+    --aulaSQL-color: #5eceb7;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.student {
+    color: var(--student-color);
+}
+
+.teacher {
+    color: var(--teacher-color);
+}
+
+.aulaSQL,
+a,
+.navbar-light .navbar-brand {
+    color: var(--aulaSQL-color);
+}
+
+.aulaSQL:hover,
+a:hover:hover,
+.navbar-brand:hover {
+    color: var(--aulaSQL-color);
+    text-decoration: none;
+}
+
+.jumbotron {
+    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F4.bp.blogspot.com%2F-llAR8FKtv8o%2FWJvGFz3LSqI%2FAAAAAAAAAss%2FD1wynoWWMosauyyaXFaYtkYVZkjwI0kagCLcB%2Fs1600%2F20170207_123610.jpg&f=1&nofb=1https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F4.bp.blogspot.com%2F-llAR8FKtv8o%2FWJvGFz3LSqI%2FAAAAAAAAAss%2FD1wynoWWMosauyyaXFaYtkYVZkjwI0kagCLcB%2Fs1600%2F20170207_123610.jpg&f=1&nofb=1");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.jumbotron-content {
+    color: white;
+    background-color: rgb(26, 26, 26, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
