@@ -52,14 +52,14 @@
                         <div class="row mb-0">
 
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn aulaSQL">
                                     {{ __('Iniciar sesión') }}
                                 </button>
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn aulaSQL">
                                     <a href={{route('register')}}>{{ __('Registrarse') }}</a>
                                 </button>
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link aulaSQL" href="{{ route('password.request') }}">
                                         {{ __('¿Has olvidado tu contraseña?') }}
                                     </a>
                                 @endif
