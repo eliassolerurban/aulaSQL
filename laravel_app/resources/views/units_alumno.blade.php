@@ -1,27 +1,17 @@
 @extends('static')
 @section('content')
-{{-- //TODO: implement dropdown for units --}}
-{{-- <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Dropdown button
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-    </div>
-  </div> --}}
-
-
-<div class="E-R_container">
-    <img src={{ asset('img/ER.png') }} alt="Modelo entidad-relación de la base de datos empresa, sobre la que se realizan los ejercicios.">
+<div class="E-R_container text-center m-4">
+    <h3 class="m-4">Modelo E-R de la base de datos <span class="aulaSQL">empresa</span></h3>
+    <img class="img-thumbnail" src={{ asset('img/ER.png') }} alt="Modelo entidad-relación de la base de datos empresa, sobre la que se realizan los ejercicios.">
 </div>
 @foreach ($units as $unit)
+{{-- //TODO: implement accordion for units --}}
 <div class="unit-container">
     <h2>{{$unit->title}}</h2>
     <h4>Ejercicios:</h4>
     @foreach ($unit->exercises as $exercise)
         @if(session("_passed$exercise->id"))
+        {{-- //TODO: implement modal for alerts --}}
             <script>window.alert('¡Correcto!')</script>
         @endif
         @if(session("_failed$exercise->id"))

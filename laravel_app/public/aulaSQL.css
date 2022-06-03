@@ -25,8 +25,9 @@ a,
 
 .aulaSQL:hover,
 a:hover:hover,
-.navbar-brand:hover {
-    color: var(--aulaSQL-color);
+.navbar-brand:hover,
+.nav-link:active {
+    color: var(--aulaSQL-color) !important;
     text-decoration: none;
 }
 
@@ -47,4 +48,15 @@ a:hover:hover,
     padding: 15px;
     border-radius: 10px;
     border: 1px solid black;
+}
+
+.gear-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown-menu {
+    right: 0;
+    left: inherit !important;
 }
