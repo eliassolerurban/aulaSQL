@@ -1,5 +1,4 @@
 @extends('layouts.app')
-{{-- //TODO: center and styles --}}
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -52,11 +51,11 @@
                         <div class="row mb-0">
 
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn aulaSQL">
+                                <button type="submit" class="btn aulaSQL-btn">
                                     {{ __('Iniciar sesión') }}
                                 </button>
                                 <button type="submit" class="btn aulaSQL">
-                                    <a href={{route('register')}}>{{ __('Registrarse') }}</a>
+                                    <a class="aulaSQL" href={{route('register')}}>{{ __('Registrarse') }}</a>
                                 </button>
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link aulaSQL" href="{{ route('password.request') }}">

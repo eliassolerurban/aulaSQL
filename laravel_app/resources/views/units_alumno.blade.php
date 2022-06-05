@@ -22,13 +22,13 @@
                     @csrf
                     <input type="hidden" name="exercise_id" value={{ $exercise->id }}>
                     <input name="student_answer" class="exercise-input" type="text">
-                    <button type="submit" class="btn btn-primary">Enviar respuesta</button>
+                    <button type="submit" class="btn student-btn">Enviar respuesta</button>
                 </form>
                 <br>
                 <br>
                 <br>
     @endforeach
         </div>
-    @endforeach
+@endforeach
 @endsection
 

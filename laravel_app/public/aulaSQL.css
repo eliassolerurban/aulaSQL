@@ -17,20 +17,6 @@
     color: var(--teacher-color);
 }
 
-.aulaSQL,
-a,
-.navbar-light .navbar-brand {
-    color: var(--aulaSQL-color);
-}
-
-.aulaSQL:hover,
-a:hover:hover,
-.navbar-brand:hover,
-.nav-link:active {
-    color: var(--aulaSQL-color) !important;
-    text-decoration: none;
-}
-
 .jumbotron {
     background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F4.bp.blogspot.com%2F-llAR8FKtv8o%2FWJvGFz3LSqI%2FAAAAAAAAAss%2FD1wynoWWMosauyyaXFaYtkYVZkjwI0kagCLcB%2Fs1600%2F20170207_123610.jpg&f=1&nofb=1https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F4.bp.blogspot.com%2F-llAR8FKtv8o%2FWJvGFz3LSqI%2FAAAAAAAAAss%2FD1wynoWWMosauyyaXFaYtkYVZkjwI0kagCLcB%2Fs1600%2F20170207_123610.jpg&f=1&nofb=1");
     background-position: center;
@@ -59,4 +45,62 @@ a:hover:hover,
 .dropdown-menu {
     right: 0;
     left: inherit !important;
+}
+
+.teacher,
+.teacher:hover,
+.teacher:active {
+    color: var(--teacher-color) !important;
+}
+
+.student,
+.student:hover,
+.student:active {
+    color: var(--student-color) !important;
+}
+
+.student-btn {
+    background-color: var(--student-color);
+    color: white;
+}
+
+.student-btn:hover {
+    color: white !important;
+    text-decoration: none;
+}
+
+.btn-danger {
+    margin-left: 15px;
+    position: relative;
+    color: white !important;
+    text-decoration: none;
+}
+
+.aulaSQL {
+    color: var(--aulaSQL-color) !important;
+}
+
+.aulaSQL:hover,
+.aulaSQL:active {
+    text-decoration: none;
+}
+
+.aulaSQL-a:hover {
+    color: var(--aulaSQL-color) !important;
+}
+
+.aulaSQL-btn {
+    background-color: var(--aulaSQL-color);
+    color: white;
+}
+
+.aulaSQL-btn:hover {
+    color: white !important;
+    text-decoration: none;
+}
+
+.profile-item:hover,
+.profile-item:active {
+    background-color: inherit;
+    color: black;
 }
