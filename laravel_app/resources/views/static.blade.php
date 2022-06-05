@@ -48,6 +48,7 @@
                         </svg></i> </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <p class="dropdown-item">Nombre: {{ auth()->user()->name }}</p>
+                    <p class="dropdown-item">Email: {{ auth()->user()->email }}</p>
                     <p class="dropdown-item">Rol: {{ auth()->user()->role }}</p>
                     <a href={{ route('logout') }} class="dropdown-item btn aulaSQL" type="submit">Cerrar sesión</a> 
                 </div>
