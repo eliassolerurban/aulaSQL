@@ -1,5 +1,7 @@
 @extends('static')
 @section('content')
+
+{{-- //TODO:center image --}}
 <div class="E-R_container">
     <img src={{ asset('img/ER.png') }} alt="Modelo entidad-relación de la base de datos empresa, sobre la que se realizan los ejercicios.">
 </div>
