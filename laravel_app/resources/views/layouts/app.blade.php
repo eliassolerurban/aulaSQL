@@ -6,7 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <meta description="El propósito general de este proyecto es el de facilitar el aprendizaje de SQL, a través de ejercicios que se realizan dentro de la misma aplicación.">
     <title>aulaSQL</title>
     <!-- Styles -->
     <link rel="shortcut icon" type="image/png" href="{{ asset('img/favicon.png') }}">

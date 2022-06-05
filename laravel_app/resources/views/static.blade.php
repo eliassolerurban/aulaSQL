@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta description="El propósito general de este proyecto es el de facilitar el aprendizaje de SQL, a través de ejercicios que se realizan dentro de la misma aplicación.">
     <title>aulaSQL</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('img/favicon.png') }}">
     <link rel="shortcut icon" sizes="64x64" href="{{ asset('img/favicon.png') }}">
