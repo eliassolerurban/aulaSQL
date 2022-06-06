@@ -15,7 +15,8 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="fix-nav"></div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <a class="aulaSQL navbar-brand" href={{ route('home') }}>aulaSQL</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

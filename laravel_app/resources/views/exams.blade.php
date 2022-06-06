@@ -1,6 +1,6 @@
 @extends('static')
 @section('content')
-    {{-- //TODO: fix style --}}
+    {{-- //TODO: codepen gear --}}
     <div class="exam-page">
         <div class="gear-container text-center">
             <img src="https://c.tenor.com/0Gs0i8LsBn8AAAAC/gear-kolo.gif" class="img-thumbnail" alt="">

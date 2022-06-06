@@ -9,11 +9,11 @@
     <button type="submit" class="btn btn-primary">Añadir</button>
 </form>
 @if(session('ok'.$classroom->id))
-    {{-- //TODO: modal --}}
+    {{-- //TODO: alert: https://getbootstrap.com/docs/4.0/components/alerts/ --}}
     <script>window.alert(@json(session('ok'.$classroom->id)))</script>
 @endif
 @if(session('ko'.$classroom->id))
-    {{-- //TODO: modal --}}
+    {{-- //TODO: alert: https://getbootstrap.com/docs/4.0/components/alerts/ --}}
     <script>window.alert(@json(session('ko'.$classroom->id)))</script>
 @endif
 

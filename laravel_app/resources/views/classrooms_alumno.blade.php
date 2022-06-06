@@ -1,41 +1,44 @@
 @extends('static')
 @section('content')
-{{-- //TODO: implement dropdown for students --}}
-{{-- <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Dropdown button
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-    </div>
-  </div> --}}
+
 @if($my_classrooms->count())
     @foreach($my_classrooms as $classroom)
-        <div class="classroom-container">
-            <h2>{{$classroom->name}}</h2>
-            @if($classroom->users->count())
-                <h4>Alumnos en este aula:</h4>
+        <div class="classroom-header card">
+            <div class="card-body">
+                <h1 class="text-center mt-2 d-inline">{{ $classroom->name }}</h1>
+            </div>
+            <div class="classroom-container">
+                @if($classroom->users->count())
+                <h4 class="text-center mt-3">Alumnos en este aula:</h4>
                 @foreach ($classroom->users as $user)
-                    <div class="student-data">
-                        <p>{{ $user->email }}</p>
-                            @foreach($units as $unit)
-                                <div class="unit-block">
-                                    <h3>{{$unit->title}}</h3>
-                                    <ul>
-                                        @foreach($user->exercises->where('unit_id', $unit->id) as $exercise)
+                <div class="student-data">
+                    <h5 class="text-center mb-5 mt-4">Datos del alumno <span
+                            class="student">{{ $user->email }}</span></h5>
+                    @foreach ($units as $unit)
+                        <div class="unit-block">
+                            @if ($user->exercises->where('unit_id', $unit->id))
+                                <h5>{{ $unit->title }}</h5>
+                                <ul>
+                                    @foreach ($user->exercises->where('unit_id', $unit->id) as $exercise)
+                                        <div class="mb-5">
                                             <h5>Ejercicio {{ $exercise->id }}</h5>
-                                            <p>{{ $exercise->question }}</p>
+                                            <p>Enunciado: {{ $exercise->question }}</p>
                                             <p>Intentos: {{ $exercise->pivot->tries }}</p>
-                                            <p>Estado: {{ $exercise->pivot->state === 'passed' ? 'Correcto' : 'Incorrecto' }}</p>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endforeach
-                @endforeach
-                    </div>
-            @endif
+                                            @if ($exercise->pivot->state === 'passed')
+                                                <p>Estado: <span class="student">Correcto</span></p>
+                                            @else
+                                                <p>Estado: <span class="text-danger">Incorrecto</span></p>
+                                            @endif
+                                        </div>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </div>
+                    @endforeach
+            @endforeach
+            </div>
+                @endif
+            </div>
         </div>
     @endforeach
 @else
