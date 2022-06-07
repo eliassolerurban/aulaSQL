@@ -130,6 +130,10 @@
     height: 38px;
 }
 
+.add-student-container input {
+    height: 38px;
+}
+
 .classroom-header {
     display: flex;
     justify-content: center;
@@ -163,4 +167,17 @@ pre {
 
 .fix-nav {
     height: 56px;
+}
+
+.add-student-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.img-thumbnail {
+    border: none;
 }
