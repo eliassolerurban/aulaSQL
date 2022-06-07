@@ -117,7 +117,7 @@ class Controller extends BaseController
             }
 
             $teacher->add_student_to_classroom($student->id, $request->classroom_id);
-            return back()->with('ok'.$request->classroom_id, "¡El alumno con email $student->email se ha añadido correctamente al aula $request->classroom_id");
+            return back()->with('ok'.$request->classroom_id, "¡El alumno con email $student->email se ha añadido correctamente al aula $request->classroom_id !");
         }
         
         return back()->with('ko'.$request->classroom_id, 'Vaya... parece que no existe el alumno con este email');

@@ -10,12 +10,12 @@
         </form>
         @if (session('ok' . $classroom->id))
             <div class="alert alert-success mt-4" role="alert">
-                <p>{{ @session('ok' . $classroom->id) }}</p>
+                <p>{{ session('ok' . $classroom->id) }}</p>
             </div>
         @endif
         @if (session('ko' . $classroom->id))
             <div class="alert alert-danger mt-4" role="alert">
-                <p>{{ @session('ko' . $classroom->id) }}</p>
+                <p>{{ session('ko' . $classroom->id) }}</p>
             </div>
     
             {{-- <script>
