@@ -42,7 +42,8 @@
         </div>
     @endforeach
 @else
-    <h2>Vaya... parece que todavía no estás en ningún aula</h2>
+    <h4 class="text-center mt-5">Vaya... parece que todavía no estás en ningún aula</h4>
+    <p class="text-center mt-5">Tendrás acceso a un aula cuando tu profesor te añada a una con tu correo electrónico.</p>
 @endif
 @endsection
 
